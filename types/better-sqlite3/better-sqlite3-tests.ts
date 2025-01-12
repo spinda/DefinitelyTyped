@@ -220,3 +220,18 @@ const stmtWithNamedBindForNewDb = newDb.prepare<NamedBindParameters>(
     "INSERT INTO test (name, age, id) VALUES (@name, @age, @id)",
 );
 stmtWithNamedBindForNewDb.run({ name: "bob1", age: 201, id: BigInt(1235) });
+
+db.updateHook((op: string, dbName: string, tableName: string, rowid: bigint) => {});
+db.updateHook(null);
+db.updateHook(undefined);
+db.updateHook();
+
+db.commitHook(() => true);
+db.commitHook(null);
+db.commitHook(undefined);
+db.commitHook();
+
+db.rollbackHook(() => {});
+db.rollbackHook(null);
+db.rollbackHook(undefined);
+db.rollbackHook();

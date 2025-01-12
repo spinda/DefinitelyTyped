@@ -75,6 +75,9 @@ declare namespace BetterSqlite3 {
             },
         ): this;
         loadExtension(path: string): this;
+        updateHook(cb?: ((op: string, dbName: string, tableName: string, rowid: bigint) => unknown) | null): this;
+        commitHook(cb?: (() => boolean) | null): this;
+        rollbackHook(cb?: (() => unknown) | null): this;
         close(): this;
         defaultSafeIntegers(toggleState?: boolean): this;
         backup(destinationFile: string, options?: Database.BackupOptions): Promise<Database.BackupMetadata>;
