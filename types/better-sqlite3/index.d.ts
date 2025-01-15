@@ -74,7 +74,7 @@ declare namespace BetterSqlite3 {
                 result?: ((total: T) => unknown) | undefined;
             },
         ): this;
-        loadExtension(path: string): this;
+        loadExtension(path: string, entryPoint?: string): this;
         updateHook(cb?: (op: string, dbName: string, tableName: string, rowid: bigint) => unknown): this;
         commitHook(cb?: () => boolean): this;
         rollbackHook(cb?: () => unknown): this;

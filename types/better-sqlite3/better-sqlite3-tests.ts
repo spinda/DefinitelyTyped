@@ -221,6 +221,10 @@ const stmtWithNamedBindForNewDb = newDb.prepare<NamedBindParameters>(
 );
 stmtWithNamedBindForNewDb.run({ name: "bob1", age: 201, id: BigInt(1235) });
 
+db.loadExtension('foo');
+db.loadExtension('foo', undefined);
+db.loadExtension('foo', 'bar');
+
 db.updateHook((op: string, dbName: string, tableName: string, rowid: bigint) => {});
 db.updateHook(undefined);
 db.updateHook();
